@@ -18,6 +18,11 @@ matrix:
     - php: 7.4
       env: SETUP=lowest
 
+branches:
+  only:
+    - master
+    - dev
+
 cache:
   directories:
     - $HOME/.composer/cache
