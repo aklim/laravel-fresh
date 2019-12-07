@@ -8,9 +8,6 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7.2
-    - php: 7.2
-      env: SETUP=lowest
     - php: 7.3
     - php: 7.3
       env: SETUP=lowest
@@ -30,12 +27,19 @@ cache:
     - vendor
 
 services:
+  - memcache
   - memcached
   - redis-server
   - mysql
 
 before_install:
   - phpenv config-rm xdebug.ini || true
+  - php --version
+  - mkdir -p $(dirname ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini)
+  - touch ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "php-config -> orig"
+  - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "extension = memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - printf "\n" | pecl install -f redis
   - travis_retry composer self-update
