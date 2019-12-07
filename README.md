@@ -1,2 +1,3 @@
 # laravel-fresh
-Fresh Laravel installation with all configured resources to start build new project's.
+
+Fresh Laravel installation with all configured resources to start build new project's based on this template.
