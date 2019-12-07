@@ -8,7 +8,7 @@
 <a href="https://travis-ci.org/aklim/laravel-fresh"><img src="https://travis-ci.org/aklim/laravel-fresh.svg?branch=master" alt="Build Status"></a>
 </p>
 
-Fresh Laravel installation with all configured resources to start build new project's based on this template.`
+Fresh Laravel installation with all configured resources to start build new project's based on this template.
 
 ## Installation
 
@@ -34,8 +34,8 @@ This is a basic step to setup new application, cloned from this repository.
 
 - Environment file
 
-To use application You should have environment file _*.env*_.
-Copy file _*.env.example*_ to a new file named _*.env*_:
+To use application You should have environment file `.env`.
+Copy file `.env.example` to a new file named `.env`:
 ```sh
 > cp .env.example .env
 ```
@@ -48,8 +48,8 @@ this command:
 php artisan key:generate
 ```
 
-- The _*storage/app/public*_ directory may be used to store user-generated files, such as profile avatars, that should 
-be publicly accessible. You should create a symbolic link at _*public/storage*_ which points to this directory. 
+- The `storage/app/public` directory may be used to store user-generated files, such as profile avatars, that should 
+be publicly accessible. You should create a symbolic link at `public/storage` which points to this directory. 
 You may create the link using this command:
 ```sh
 > php artisan storage:link
