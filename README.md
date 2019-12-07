@@ -14,33 +14,34 @@ Fresh Laravel installation with all configured resources to start build new proj
 
 This is a basic step to setup new application, cloned from this repository.
 
-- Clone repository into You web server folder: 
+- **Clone repository into You web server folder**:
 ```sh
 > git clone https://github.com/aklim/laravel-fresh.git you_project
 ```
 
-- Login into the project folder and install required vendor libraries:
+- **Login into the project folder and install required vendor libraries**:
 ```sh
 > cd you_project
 > composer install
 > npm install
 ```
 
-- Let writable permission to the web server for this folders:
+- **Let writable permission to the web server for this folders**:
 ```sh
 > chmod 0777 storage
 > chmod 0777 bootstrap/cache
 ```
 
-- Environment file
+- **Environment file**
 
 To use application You should have environment file `.env`.
+
 Copy file `.env.example` to a new file named `.env`:
 ```sh
 > cp .env.example .env
 ```
 
-- Application Key
+- **Application Key**
 
 The next thing you should do after installing Laravel is set your application key to a random string. To do this use
 this command:
