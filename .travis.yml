@@ -42,6 +42,7 @@ before_install:
 
 install:
   - cp .env.travis .env
+  - rm composer.lock
   - mysql -e 'CREATE DATABASE testing;'
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
