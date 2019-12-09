@@ -40,6 +40,7 @@ Copy file `.env.example` to a new file named `.env`:
 ```sh
 > cp .env.example .env
 ```
+Edit this file & add database configuration values & application settings.
 
 - **Application Key**
 
@@ -61,3 +62,20 @@ You may create the link using this command:
 > php artisan serve
 ```
 This command will start a development server at http://localhost:8000.
+
+- **Database**
+
+Create new MySQL database `laravel-fresh`:
+```sh
+> mysql -u username -p
+> CREATE DATABASE `laravel_fresh` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+> \q
+```
+
+Add this database settings into You `.env` file.
+
+Run migrations:
+
+```sh
+> php artisan migrate --force
+```
