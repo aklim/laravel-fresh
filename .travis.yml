@@ -40,7 +40,6 @@ before_install:
   - printf "\n" | pecl install -f redis
   - travis_retry composer self-update
   - mysql -e 'CREATE DATABASE testing;'
-  - php artisan dusk:chrome-driver
 
 install:
   - if [[ $SETUP = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
@@ -49,6 +48,7 @@ install:
 before_script:
   - cp .env.travis .env
   - php artisan migrate --no-interaction -vvv
+  - php artisan dusk:chrome-driver
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 
