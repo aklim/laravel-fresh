@@ -15,6 +15,9 @@ matrix:
     - php: 7.4
       env: SETUP=lowest
 
+addons:
+  chrome: stable
+
 branches:
   only:
     - master
@@ -37,6 +40,8 @@ before_install:
   - printf "\n" | pecl install -f redis
   - travis_retry composer self-update
   - mysql -e 'CREATE DATABASE testing;'
+  - php artisan key:generate
+  - php artisan dusk:chrome-driver
 
 install:
   - if [[ $SETUP = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
@@ -45,5 +50,9 @@ install:
 before_script:
   - cp .env.travis .env
   - php artisan migrate --no-interaction -vvv
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - php artisan serve &
 
-script: vendor/bin/phpunit
+script:
+  - vendor/bin/phpunit
+  - php artisan dusk
