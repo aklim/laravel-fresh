@@ -38,19 +38,22 @@ before_install:
   - phpenv config-rm xdebug.ini || true
   - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - printf "\n" | pecl install -f redis
-  - travis_retry composer self-update
-  - mysql -e 'CREATE DATABASE testing;'
+
 
 install:
 #  - if [[ $SETUP = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
 #  - if [[ $SETUP = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable --no-suggest; fi
   - cp .env.travis .env
+  - mysql -e 'CREATE DATABASE testing;'
+  - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
+  - php artisan migrate:fresh --seed
   - php artisan dusk:chrome-driver
+  - chmod -R 0755 vendor/laravel/dusk/bin/
 
 before_script:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9515 http://localhost &
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 
 script:
