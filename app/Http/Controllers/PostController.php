@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\PostCreated;
 use App\Events\PostUpdated;
 use App\Models\Eloquent\Post;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -142,7 +143,8 @@ class PostController extends Controller
      *
      * @param Post $post
      *
-     * @return void
+     * @return mixed
+     * @throws Exception
      */
     public function destroy(Post $post)
     {

@@ -13,7 +13,8 @@ class PostPolicy
     /**
      * Determine whether the user can view any posts.
      *
-     * @param  \App\Models\Eloquent\User  $user
+     * @param User $user
+     *
      * @return mixed
      */
     public function viewAny(User $user)
@@ -24,8 +25,9 @@ class PostPolicy
     /**
      * Determine whether the user can view the post.
      *
-     * @param  \App\Models\Eloquent\User  $user
-     * @param  \App\Post  $post
+     * @param User $user
+     * @param Post $post
+     *
      * @return mixed
      */
     public function view(User $user, Post $post)
@@ -36,7 +38,8 @@ class PostPolicy
     /**
      * Determine whether the user can create posts.
      *
-     * @param  \App\Models\Eloquent\User  $user
+     * @param User  $user
+     *
      * @return mixed
      */
     public function create(User $user)
@@ -47,8 +50,9 @@ class PostPolicy
     /**
      * Determine whether the user can update the post.
      *
-     * @param  \App\Models\Eloquent\User  $user
-     * @param  \App\Post  $post
+     * @param  User  $user
+     * @param  Post  $post
+     *
      * @return mixed
      */
     public function update(User $user, Post $post)
@@ -59,8 +63,9 @@ class PostPolicy
     /**
      * Determine whether the user can delete the post.
      *
-     * @param  \App\Models\Eloquent\User  $user
-     * @param  \App\Post  $post
+     * @param  User  $user
+     * @param  Post  $post
+     *
      * @return mixed
      */
     public function delete(User $user, Post $post)
@@ -71,8 +76,9 @@ class PostPolicy
     /**
      * Determine whether the user can restore the post.
      *
-     * @param  \App\Models\Eloquent\User  $user
-     * @param  \App\Post  $post
+     * @param  User  $user
+     * @param  Post  $post
+     *
      * @return mixed
      */
     public function restore(User $user, Post $post)
@@ -83,8 +89,9 @@ class PostPolicy
     /**
      * Determine whether the user can permanently delete the post.
      *
-     * @param  \App\Models\Eloquent\User  $user
-     * @param  \App\Post  $post
+     * @param  User  $user
+     * @param  Post  $post
+     *
      * @return mixed
      */
     public function forceDelete(User $user, Post $post)

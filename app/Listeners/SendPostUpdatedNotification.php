@@ -7,6 +7,10 @@ use App\Models\Eloquent\Post;
 
 class SendPostUpdatedNotification
 {
+    public function via()
+    {
+
+    }
     /**
      * @param PostUpdated $event
      *
