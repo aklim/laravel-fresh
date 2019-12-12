@@ -69,6 +69,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/posts') }}">Posts</a>
                     @else
                         <a dusk="login-link" href="{{ route('login') }}">Login</a>
 
@@ -81,18 +82,17 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel-Fresh
+                    <br>
+                    <small style="font-size: 0.5em">Dashboard</small>
                 </div>
 
+                <hr>
+
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laravel.com/docs" target="_blank">Docs</a>
+                    <a href="https://travis-ci.org/aklim/laravel-fresh" target="_blank">Travis CI</a>
+                    <a href="https://github.com/aklim/laravel-fresh" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>
