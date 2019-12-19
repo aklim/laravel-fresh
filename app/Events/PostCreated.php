@@ -3,6 +3,10 @@
 namespace App\Events;
 
 use App\Models\Eloquent\Post;
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 /**
@@ -12,14 +16,22 @@ use Illuminate\Queue\SerializesModels;
  * @athor   Andrey Klimenko <andrey.iemail@gmail.com>
  * @version 1.0.0
  */
-class PostCreated
+class PostCreated implements ShouldBroadcast
 {
-    use SerializesModels;
+    use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $post;
 
     public function __construct(Post $post)
     {
         $this->post = $post;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function broadcastOn()
+    {
+        return new Channel('posts'); // ['posts'];
     }
 }

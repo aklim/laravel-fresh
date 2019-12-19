@@ -29,4 +29,53 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    created() {
+        this.listenForEvents();
+    },
+    methods: {
+        listenForEvents() {
+
+            Echo.channel('posts')
+                .listen('PostUpdated', response => {
+                    let post = response.post || {};
+
+                    alert(post.title);
+
+
+                    // if (! ('Notification' in window)) {
+                    //     console.log('NO NOTIF');
+                    //     alert('Web Notification is not supported');
+                    // } else if (Notification.permission === "granted") {
+                    //     console.log('GRANTED');
+                    //     let notification = new Notification('New post alert!', {
+                    //         body: post.title, // content for the alert
+                    //         icon: "https://pusher.com/static_logos/320x320.png" // optional image url
+                    //     });
+                    //
+                    //     // link to page on clicking the notification
+                    //     notification.onclick = () => {
+                    //         window.open(window.location.href);
+                    //     };
+                    // } else if (Notification.permission !== "denied") {
+                    //     console.log('GRANTED');
+                    //     Notification.requestPermission().then(function (permission) {
+                    //         // If the user accepts, let's create a notification
+                    //         if (permission === "granted") {
+                    //             let notification = new Notification('New post alert!', {
+                    //                 body: post.title, // content for the alert
+                    //                 icon: "https://pusher.com/static_logos/320x320.png" // optional image url
+                    //             });
+                    //
+                    //             // link to page on clicking the notification
+                    //             notification.onclick = () => {
+                    //                 window.open(window.location.href);
+                    //             };
+                    //         }
+                    //     });
+                    // }
+
+                });
+
+        }
+    }
 });
